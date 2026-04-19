@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Abril_Fatface, Inter, Special_Elite } from "next/font/google";
 
 import { siteCopy } from "@/content/site-copy";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bodyFont = Inter({
   subsets: ["latin"],
+  variable: "--font-body",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const displayFont = Abril_Fatface({
+  weight: "400",
   subsets: ["latin"],
+  variable: "--font-display",
+});
+
+const accentFont = Special_Elite({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-accent",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +34,7 @@ export const metadata: Metadata = {
     description: siteCopy.shortDescription,
     url: `https://${siteCopy.domain}`,
     siteName: siteCopy.name,
-    images: ["/og-image.jpg"],
+    images: ["/home-collage.png"],
     type: "website",
   },
 };
@@ -40,9 +47,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bodyFont.variable} ${displayFont.variable} ${accentFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[var(--paper)]">
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,11 +2,19 @@
 
 :root {
   color-scheme: light;
+  --navy: #1d2a44;
+  --navy-deep: #141d30;
+  --cream: #f4ead5;
+  --cream-deep: #ebddb8;
+  --paper: #f7efd9;
+  --brick: #b04a3a;
+  --brick-deep: #8a3627;
+  --sepia: #5a4a32;
+  --sepia-light: #8a7855;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
 }
 
 html {
@@ -15,9 +23,9 @@ html {
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #111111;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--navy);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -27,4 +35,43 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(176, 74, 58, 0.2);
+}
+
+.paper-grain {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(90, 74, 50, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(90, 74, 50, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(176, 74, 58, 0.03) 0%, transparent 60%);
+}
+
+.travel-shadow {
+  box-shadow:
+    0 16px 36px rgba(20, 29, 48, 0.14),
+    0 3px 10px rgba(20, 29, 48, 0.08);
+}
+
+.ticket-cut {
+  position: relative;
+  -webkit-mask-image:
+    radial-gradient(circle at 100% 18%, transparent 4px, black 4.5px),
+    radial-gradient(circle at 100% 50%, transparent 4px, black 4.5px),
+    radial-gradient(circle at 100% 82%, transparent 4px, black 4.5px),
+    linear-gradient(black, black);
+}
+
+.airmail-edge {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--brick) 0 18px,
+      var(--cream) 18px 36px,
+      var(--navy) 36px 54px,
+      var(--cream) 54px 72px
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 8px;
 }

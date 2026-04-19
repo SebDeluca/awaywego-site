@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/site-footer";
+import { LegalPage } from "@/components/legal-page";
 import { siteCopy } from "@/content/site-copy";
 
 export const metadata: Metadata = {
@@ -10,18 +10,23 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <>
-      <main className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="text-4xl font-semibold">Support</h1>
-        <p className="mt-6 text-lg leading-8 text-black/75">
-          For help with Away We Go, email{" "}
-          <a className="underline" href={`mailto:${siteCopy.supportEmail}`}>
-            {siteCopy.supportEmail}
-          </a>
-          .
-        </p>
-      </main>
-      <SiteFooter />
-    </>
+    <LegalPage
+      eyebrow="Support"
+      title="Support"
+      intro={siteCopy.legal.supportIntro}
+    >
+      <p>
+        For help with Away We Go, email{" "}
+        <a className="underline decoration-[var(--brick)]" href={`mailto:${siteCopy.supportEmail}`}>
+          {siteCopy.supportEmail}
+        </a>
+        .
+      </p>
+      <p>
+        Include as much detail as you can about what went wrong, what device you
+        are using, and what you expected to happen. That gives us the shortest
+        path to a useful reply.
+      </p>
+    </LegalPage>
   );
 }

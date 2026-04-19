@@ -1,20 +1,40 @@
+import Image from "next/image";
 import Link from "next/link";
+
+import { siteCopy } from "@/content/site-copy";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-black/10 bg-white px-6 py-5 text-sm text-black/70">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
-        <p className="font-medium text-black">Away We Go</p>
-        <nav className="flex items-center gap-4">
-          <Link href="/privacy" className="transition-opacity hover:opacity-70">
-            Privacy
+    <footer className="paper-grain border-t border-[rgba(90,74,50,0.18)] bg-[var(--cream)] px-6 py-8 text-sm text-[var(--sepia)] md:px-10">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/app-icon.png"
+            alt=""
+            width={30}
+            height={30}
+            className="rounded-md border border-black/10"
+          />
+          <div className="flex flex-col">
+            <span className="text-lg [font-family:var(--font-display)]">
+              {siteCopy.name}
+            </span>
+            <span className="text-[0.72rem] uppercase tracking-[0.16em] text-[var(--sepia-light)]">
+              © {new Date().getFullYear()} · {siteCopy.footerNote}
+            </span>
+          </div>
+        </div>
+
+        <nav className="flex flex-wrap items-center gap-4 text-[0.78rem] uppercase tracking-[0.18em] [font-family:var(--font-accent)]">
+          <Link href="/" className="transition-colors hover:text-[var(--brick)]">
+            Home
           </Link>
-          <Link href="/terms" className="transition-opacity hover:opacity-70">
-            Terms
-          </Link>
-          <Link href="/support" className="transition-opacity hover:opacity-70">
-            Support
-          </Link>
+          <a
+            href={`mailto:${siteCopy.supportEmail}`}
+            className="transition-colors hover:text-[var(--brick)]"
+          >
+            Contact
+          </a>
         </nav>
       </div>
     </footer>
